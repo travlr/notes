@@ -1,4 +1,7 @@
 # Links
 
 ## Examples
-[Terraform Examples](https://github.com/hashicorp/terraform/tree/master/examples)
+
+- Example Configurations
+
+  - [Terraform Examples](https://github.com/hashicorp/terraform/tree/master/examples)
