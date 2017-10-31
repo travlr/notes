@@ -157,9 +157,17 @@
       - kubelet pod checkpointing (or something)
         - https:/github.com/kubernetes/kubernetes/issues/489
     - permanent loss of control-plane
+      - similar situation to initial node bootstrap, but utilizing existing etcd state or etcd backup
+        - etcd should be backed up (by admin ??? )
+      - need to start temp replacement api-server
+        - could be binary, static pod, new tool, bootkube, etc
+      - recovery once etcd+api is available can be done via kubectl
 
-
-
+- todo (might be already done after Nov 2016)
+  - daemonset rolling updates (DONE)
+  - pod checkpointing (or something): kubernetes/issues/489
+  - self-host etcd: bootkube/issues/31
+  - build simple disaster recovery tooling
 
 
 
