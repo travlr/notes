@@ -164,7 +164,7 @@
       - recovery once etcd+api is available can be done via kubectl
 
 - todo (might be already done after Nov 2016)
-  - daemonset rolling updates (DONE)
+  - daemonset rolling updagittes (DONE)
   - pod checkpointing (or something): kubernetes/issues/489
   - self-host etcd: bootkube/issues/31
   - build simple disaster recovery tooling
