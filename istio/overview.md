@@ -25,9 +25,9 @@ Istio provides and easy way to create a network of deployed services
 - Pilot
 - Policy Application is extensible
     - API calls within the service mesh
-    - resources which are not necessarily expressed at API 
+    - resources which are not necessarily expressed at API
         - quota to amount of CPU consumed
-    - maintained as a distinct service with its own API 
+    - maintained as a distinct service with its own API
         - allows services to directly integrate with it as needed
 - Istio assumes
     - a service registry
@@ -37,7 +37,7 @@ Istio provides and easy way to create a network of deployed services
         - kubernetes (builtin)
         - See solutions for VM based apps
 - Service discovery
-    - Pilot 
+    - Pilot
         - consumes info from the service registry
         - provides platform-agnostic service discovery interface
         - dynamically updates load-balancing pools accordingly
@@ -66,7 +66,7 @@ Istio provides and easy way to create a network of deployed services
     - abstracts istio managed services from above bullet's details
 - Uses "Mixer Configuration"
     - DSL to control how API calls and L4 traffic flow across various services
-    - configure service level properties such as 
+    - configure service level properties such as
         - circuit breakers
         - timeouts
         - retries
@@ -74,7 +74,7 @@ Istio provides and easy way to create a network of deployed services
             - canary deployments
             - A/B testing
             - staged rollouts (% based)
-    - example: simple rule to send 100% of incoming traffic for a "reviews" service to 
+    - example: simple rule to send 100% of incoming traffic for a "reviews" service to
       "v1" can be described using the Rules DSL as follows:
         ```yaml
         apiVersion: config.istio.io/v1alpha2
@@ -91,7 +91,7 @@ Istio provides and easy way to create a network of deployed services
          ```
     - "destination" is the name of the service
     - "labels" identify specific service instances
-        - e.g. ...kubernetes... only pods with the label "v1" will recieve traffic
+        - e.g. ...kubernetes... only pods with the label "v1" will receive traffic
 - 3 kinds of traffic management rules in istio
     - Route Rules
     - Destination Policies (not the same as mixer policies)
@@ -100,7 +100,7 @@ Istio provides and easy way to create a network of deployed services
 # Pilot
 
 - Service Discovery
-- Abstracts platform specific SD mechanisms 
+- Abstracts platform specific SD mechanisms
 
 # Data Plane
 
@@ -117,15 +117,15 @@ Istio provides and easy way to create a network of deployed services
 - load balancing
 - tls termination
 - http/2 & grpc proxying
-- circuit 
+- circuit
 - health checks
 - staged rollouts w/ % based traffic split
 - fault injection
 - rich metrics
 - extracts signals about traffic behavior (requests, etc) that istio calls "attributes"
-    - Used in "mixer" to 
+    - Used in "mixer" to
         - enforce policy decisions
-        - send to monitoring systems to provide information about the behavior of 
+        - send to monitoring systems to provide information about the behavior of
           the mesh
 
 # Istio-Auth
