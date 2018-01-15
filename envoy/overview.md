@@ -1,8 +1,6 @@
 [docs v1.5](https://www.envoyproxy.io/docs/envoy/v1.5.0/)
 
-#Introduction
-
-## What is Envoy
+# What is Envoy
 
 - L7 proxy
 - com bus designed for large modern SOAs
@@ -11,7 +9,7 @@
   - when problems occur, it should be easy to determine source
 
 
-### Out of Process Architecture (OOPA)
+## Out of Process Architecture (OOPA)
 
 - a self-contained process designed to run alongside every app server
 - all envoys form a transparent com mesh
@@ -25,13 +23,13 @@
   - lib approach is painful when upgrading
 
 
-### Modern C++11
+## Modern C++11
 
 - native code provides generally excellent latency properties
 - better than a C native impl... developer productive and low latency
 
 
-### L3/L4 Filter Architecture
+## L3/L4 Filter Architecture
 
 - is L3/L4 proxy at its core
 - has pluggable filter chain
@@ -44,7 +42,7 @@
     - etc
 
 
-### HTTP L7 Filter Architecture
+## HTTP L7 Filter Architecture
 
 - filters can be plugged into the HTTP connection mgmt subsystem
   - buffering
@@ -55,7 +53,7 @@
   - etc
 
 
-### First Class HTTP/2 Support
+## First Class HTTP/2 Support
 
 - transparent http/1 to http/2 proxy in both directions
   - clients/target servers can be bridged in any combination
@@ -64,7 +62,7 @@
   - req/rep multiplexing
 
 
-### HTTP L7 Routing
+## HTTP L7 Routing
 
 - in http mode, supports a routing subsystem to:
   - route/redirect reqs
@@ -79,20 +77,20 @@
     - most useful for edge proxy
     - also leveraged for S2S proxying
 
-### gRPC Support
+## gRPC Support
 
 - built on top of http/2
 - envoy routes and load balances substrate (http/2) for gRPC req/rep
 
 
-### MongoDB L7 Support
+## MongoDB L7 Support
 
 - sniffing
 - stats production
 - logging
 
 
-### DynamoDB L7 Support
+## DynamoDB L7 Support
 
 - amazon's nosql key/value store
 - L7 support for
@@ -100,14 +98,14 @@
   - stats production
 
 
-### Service Discovery (SD)
+## Service Discovery (SD)
 
 - supports multiple methods
   - asynchronous DNS resolution
   - REST based lookup via a SD service
 
 
-### Health Checking (HC)
+## Health Checking (HC)
 
 - recommended to build an envoy mesh is to treat SD as an 'eventually
   consitent process'
@@ -117,7 +115,7 @@
 - also supports passive HC via an 'outlier detection' system
 
 
-### Advanced Load Balancing (LB)
+## Advanced Load Balancing (LB)
 
 - advantageous over lib based proxy
   - configure in single location.. available to any app
@@ -131,7 +129,7 @@
   - req racing (in future, supported)
 
 
-### Front/Edge Proxy Support
+## Front/Edge Proxy Support
 
 - Envoy is mostly designed for S2S, but...
 - beneficial to use same software at edge too
@@ -148,7 +146,7 @@
   - http L7 routing
 
 
-### Best in Class Observability
+## Best in Class Observability
 
 - envoy's primary goal is to make the network transparent
 - includes robust stats support for all subsystems
@@ -158,67 +156,7 @@
 - also supported is distributed tracing via third-party providers
 
 
-### Dynamic Configuration
+## Dynamic Configuration
 
 - optional consumption of layered set of dynamic config apis
 - use apis to build complex, centrally managed deployments if desired
-
-
-## Design Goals
-
-- code is modular.. slightly does hinder performance though
-
-
-## Architecture Overview
-
-### Terminology
-
-**Host:**
-- an entity capable of network com
-  - app on mobile phone
-  - server
-  - etc
-
-- is a logical network app
-- a physical hardware could have multiple hosts on it
-  - but, ea must be independently addressed
-
-
-**Downstream (DS)**
-- req/rep centric
-- sends req receives rep
-
-
-**Upstream (US)**
-- req/rep centric
-- receives connections and reqs from envoy and returns reps
-
-
-**Listener**
-- a named network location
-  - port
-  - unix domain socket
-  - etc
-
-- can be connected to by DS clients
-- envoy exposes these for DS hosts to connect to
-
-
-**Cluster**
-- a group of logically similar upstream hosts that envoy connects to
-- US services are discovered via SD
-- optionally uses HC on these group members
-- LB req routing is determined by the LB policy
-
-
-**Mesh**
-- a group of hosts that coordinate to provide a consistent network topology
-- a group of envoy proxies that form a msg passing substrate for a
-  distributed system comprised of many different services and app platforms
-
-
-**Runtime Configuration**
-- out-of-band, real-time config system deployed alongside envoy
-- config settings affect ops w/out needing to
-  - restart envoy
-  - affect primary config
